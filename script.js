@@ -1,0 +1,35 @@
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function randomDelay(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        async function showMessage(text, min, max) {
+            await delay(randomDelay(min, max));
+
+            let div = document.createElement("div");
+            div.textContent = text;
+            document.body.appendChild(div);
+
+
+            for (let i = 1; i <= 3; i++) {
+                div.textContent = text + ".".repeat(i);
+                await delay(400);
+            }
+        }
+
+        async function startHack() {
+            await showMessage("initializing hacking", 1000, 5000);
+            await showMessage("reading files", 1000, 7000);
+            await showMessage("password files detected", 1000, 7000);
+            await showMessage("sending all passwords and personal files to server", 1000, 7000);
+            await showMessage("cleaning up", 1000, 7000);
+
+        }
+
+        startHack();
+
+    
